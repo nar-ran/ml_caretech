@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MLCARETECH - Ver Paciente</title>
+    <link rel="icon" type="image" href="img/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/pacientes-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="form-container">
+      <header>
+        <img
+          src="img/icon-bg.png"
+          alt="Logo de ML Caretech"
+          class="responsive-image"
+        />
+        <p>DETALLES DEL PACIENTE</p>
+      </header>
+
+      <div class="form-content">
+        <a href="listar-pacientes.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Volver a la lista
+        </a>
+
+        <div id="paciente-detalles" class="detail-view">
+          <!-- Los datos se cargarán dinámicamente -->
+          <div class="detail-loading">
+            <div class="spinner"></div>
+            <p>Cargando información del paciente...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/ver-paciente.js"></script>
+    <script type="module" src="./js/firebase-config.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML CARETECH - Lista de Pacientes</title>
+    <link rel="icon" type="image" href="img/icon.jpg" />
+    <link rel="stylesheet" href="styles/pacientes-styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="form-container">
+      <header>
+        <img
+          src="img/icon-bg.png"
+          alt="Logo de ML Caretech"
+          class="responsive-image"
+        />
+        <p>LISTA DE PACIENTES REGISTRADOS</p>
+      </header>
+
+      <div class="table-container">
+        <!-- Botón de regreso añadido aquí -->
+        <a href="index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Volver al Formulario
+        </a>
+
+        <!-- Estado de carga -->
+        <div id="loading-state" class="loading-container">
+          <div class="spinner"></div>
+          <p>Cargando lista de pacientes...</p>
+        </div>
+
+        <!-- Tabla (inicialmente oculta) -->
+        <table id="tabla-pacientes" style="display: none">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Sexo</th>
+              <th>Contacto</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Los datos se llenarán con JavaScript -->
+          </tbody>
+        </table>
+
+        <!-- Estado vacío (oculto inicialmente) -->
+        <div id="empty-state" class="empty-state" style="display: none">
+          <i class="fas fa-user-slash"></i>
+          <p>No se encontraron pacientes registrados</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/firebase-config.js"></script>
+    <script type="module" src="./js/lista-pacientes.js"></script>
+  </body>
+</html>
