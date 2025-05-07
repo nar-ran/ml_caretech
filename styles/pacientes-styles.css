@@ -176,3 +176,34 @@ tr:hover {
   white-space: pre-wrap;
   line-height: 1.6;
 }
+
+/* Estilos base para los botones de acción */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;       /* Mismo ancho */
+  height: 30px;      /* Mismo alto */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0;        /* Elimina padding interno */
+  font-size: 16px;   /* Tamaño del icono */
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Estilos específicos para cada botón (opcional) */
+.action-btn.view-btn {
+  color: #3498db;    /* Color azul para el botón de ver */
+}
+
+.action-btn.delete-btn {
+  color: #e74c3c;    /* Color rojo para el botón de eliminar */
+}
+
+/* Asegúrate de que los iconos tengan el mismo tamaño */
+.action-btn i.fas {
+  font-size: inherit; /* Hereda el tamaño del botón */
+  line-height: 1;     /* Evita desplazamientos verticales */
+}

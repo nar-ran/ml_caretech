@@ -127,9 +127,6 @@ function renderPacientes(querySnapshot) {
         <a href="ver-paciente.html?id=${documento.id}" class="action-btn view-btn">
           <i class="fas fa-eye"></i>
         </a>
-        <a href="editar-paciente.html?id=${documento.id}" class="action-btn edit-btn">
-          <i class="fas fa-edit"></i>
-        </a>
         <button class="action-btn delete-btn" data-id="${documento.id}">
           <i class="fas fa-trash"></i>
         </button>
