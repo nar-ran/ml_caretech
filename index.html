@@ -60,7 +60,7 @@
 
             <div class="form-group">
               <label for="estadoCivil">Estado civil</label>
-              <select id="estadoCivil" name="estadoCivil">
+              <select id="estadoCivil" name="estadoCivil" required>
                 <option value="">Seleccionar...</option>
                 <option value="Soltero/a">Soltero/a</option>
                 <option value="Casado/a">Casado/a</option>
@@ -98,7 +98,7 @@
           <div class="form-grid">
             <div class="form-group">
               <label for="grupoSanguineo">Grupo sanguíneo</label>
-              <select id="grupoSanguineo" name="grupoSanguineo">
+              <select id="grupoSanguineo" name="grupoSanguineo" required>
                 <option value="">Seleccionar...</option>
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
@@ -118,7 +118,7 @@
                 type="number"
                 id="peso"
                 name="peso"
-                maxlength="30"
+                maxlength="3"
                 step="0.1"
                 min="0"
                 required
@@ -132,7 +132,7 @@
                 id="estatura"
                 name="estatura"
                 min="0"
-                maxlength="30"
+                maxlength="5"
                 required
               />
             </div>
@@ -168,7 +168,7 @@
                 type="tel"
                 id="contactoTelefono"
                 name="contactoTelefono"
-                maxlength="30"
+                maxlength="15"
                 required
               />
             </div>

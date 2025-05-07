@@ -3,22 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MLCARETECH - Ver Paciente</title>
+    <title>ML CARETECH - Ver Paciente</title>
     <link rel="icon" type="image" href="img/icon.jpg" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/pacientes-styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    </style>
   </head>
   <body>
     <div class="form-container">
       <header>
-        <img
-          src="img/icon-bg.png"
-          alt="Logo de ML Caretech"
-          class="responsive-image"
-        />
+        <a href="index.html">
+          <img
+            src="img/icon-bg.png"
+            alt="Logo de ML Caretech"
+            class="responsive-image"
+          />
+        </a>
         <p>DETALLES DEL PACIENTE</p>
       </header>
 
@@ -28,7 +32,7 @@
         </a>
 
         <div id="paciente-detalles" class="detail-view">
-          <!-- Spinner de carga original -->
+          <!-- Estado de carga -->
           <div class="detail-loading">
             <div class="spinner"></div>
             <p>Cargando información del paciente...</p>

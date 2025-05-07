@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 function mostrarPaciente(paciente) {
   const detallesContainer = document.getElementById("paciente-detalles");
 
-  // Generar HTML idéntico a index.html pero con divs readonly
   detallesContainer.innerHTML = `
     <!-- Sección 1: Información Personal -->
     <div class="form-section">
