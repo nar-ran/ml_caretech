@@ -1,44 +1,64 @@
-import { registrarPaciente } from './firebase-pacientes.js';
+import { registrarPaciente } from "./firebase-pacientes.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('form-paciente');
-  const submitBtn = document.getElementById('submit-btn');
-  const loader = document.getElementById('loader');
-  const btnText = document.getElementById('btn-text');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form-paciente");
+  const submitBtn = document.getElementById("submit-btn");
+  const loader = document.getElementById("loader");
+  const btnText = document.getElementById("btn-text");
 
-  // Manejar envío del formulario
-  form.addEventListener('submit', async (e) => {
+  const guardarEstadoFormulario = () => {
+    const formData = new FormData(form);
+    const formDataObject = Object.fromEntries(formData.entries());
+    localStorage.setItem("formPacienteData", JSON.stringify(formDataObject));
+  };
+
+  const cargarEstadoFormulario = () => {
+    const storedData = localStorage.getItem("formPacienteData");
+    if (storedData) {
+      const formDataObject = JSON.parse(storedData);
+      for (const key in formDataObject) {
+        const inputElement = form.querySelector(`[name="${key}"]`);
+        if (inputElement) {
+          inputElement.value = formDataObject[key];
+        }
+      }
+    }
+  };
+
+  cargarEstadoFormulario();
+
+  form.querySelectorAll("input, textarea, select").forEach((input) => {
+    input.addEventListener("input", guardarEstadoFormulario);
+  });
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
-    // Mostrar loader y deshabilitar botón
-    loader.style.display = 'inline-block';
-    btnText.textContent = 'Guardando...';
+
+    loader.style.display = "inline-block";
+    btnText.textContent = "Guardando...";
     submitBtn.disabled = true;
 
-    // Recolectar datos del formulario
     const formData = new FormData(form);
     const pacienteData = Object.fromEntries(formData.entries());
 
     try {
-      // Registrar paciente
       const resultado = await registrarPaciente(pacienteData);
-      
+
       if (resultado.success) {
-        // Mostrar mensaje de éxito
         mostrarMensajeExito();
-        // Resetear formulario
         form.reset();
+        localStorage.removeItem("formPacienteData");
       } else {
-        // Mostrar error
         mostrarError(resultado.error);
       }
     } catch (error) {
       console.error("Error inesperado:", error);
-      mostrarError("Ocurrió un error inesperado. Por favor intenta nuevamente.");
+      mostrarError(
+        "Ocurrió un error inesperado. Por favor intenta nuevamente."
+      );
     } finally {
-      // Restaurar botón
-      loader.style.display = 'none';
-      btnText.textContent = 'Guardar Registro Médico';
+      loader.style.display = "none";
+      btnText.textContent = "Guardar Registro Médico";
       submitBtn.disabled = false;
     }
   });
@@ -47,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * Muestra mensaje de éxito
    */
   function mostrarMensajeExito() {
-    const mensaje = document.createElement('div');
+    const mensaje = document.createElement("div");
     mensaje.innerHTML = `
       <div style="
         position: fixed;
@@ -64,12 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <strong>✓ Éxito!</strong> Registro médico guardado correctamente.
       </div>
     `;
-    
+
     document.body.appendChild(mensaje);
-    
-    // Eliminar después de 5 segundos
+
     setTimeout(() => {
-      mensaje.style.animation = 'slideOut 0.3s ease-in';
+      mensaje.style.animation = "slideOut 0.3s ease-in";
       setTimeout(() => mensaje.remove(), 300);
     }, 5000);
   }
@@ -79,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param {String} mensaje - Mensaje de error a mostrar
    */
   function mostrarError(mensaje) {
-    const errorDiv = document.createElement('div');
+    const errorDiv = document.createElement("div");
     errorDiv.innerHTML = `
       <div style="
         position: fixed;
@@ -96,18 +115,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <strong>✗ Error!</strong> ${mensaje}
       </div>
     `;
-    
+
     document.body.appendChild(errorDiv);
-    
-    // Eliminar después de 5 segundos
+
     setTimeout(() => {
-      errorDiv.style.animation = 'slideOut 0.3s ease-in';
+      errorDiv.style.animation = "slideOut 0.3s ease-in";
       setTimeout(() => errorDiv.remove(), 300);
     }, 5000);
   }
 
-  // Añadir estilos para las animaciones
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = `
     @keyframes slideIn {
       from { transform: translateX(100%); opacity: 0; }
